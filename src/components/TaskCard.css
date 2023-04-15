@@ -9,7 +9,6 @@
 .taskcard li {
   font-size: 20px;
   margin: 20px 5px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 5px;
   padding: 10px;
   display: flex;
@@ -36,6 +35,12 @@
   background-color: #be3434;
 }
 
+.taskcard .title {
+  text-align: center;
+  margin: 15px 0 15px 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(193, 193, 193);
+}
 .buttons-wrap {
   display: flex;
   justify-content: space-between;
@@ -43,7 +48,7 @@
 }
 
 .goal {
-  padding: 5px 15px 5px 15px;
+  padding: 0px 15px 15px 15px;
 }
 button.status {
   background-color: #129762;

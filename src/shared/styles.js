@@ -21,7 +21,7 @@ export const StyledHeader = styled.header`
   justify-content: center;
   align-items: center;
   height: 70px;
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 2px 4px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px, rgba(0, 0, 0, 0.1) 0px 6px 6px;
   font-size: 20px;
   padding: 0px 10px;
   width: 100vw;

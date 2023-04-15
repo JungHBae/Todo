@@ -1,3 +1,11 @@
+.taskcard {
+  background-color: transparent;
+  min-width: 150px;
+}
+.taskcard .goal {
+  font-size: 14px;
+}
+
 .taskcard li {
   font-size: 20px;
   margin: 20px 5px;
@@ -5,28 +13,41 @@
   border-radius: 5px;
   padding: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 8px;
+  transition: 0.2s;
 }
 
 .taskcard li.completed {
   box-shadow: rgba(48, 114, 0, 0.5) 0px 2px 6px 2px;
 }
-
+.taskcard li.completed:hover {
+  box-shadow: rgba(48, 114, 0, 0.8) 0px 3px 8px 2px;
+}
 .taskcard li.incomplete {
   box-shadow: rgba(135, 20, 0, 0.5) 0px 2px 6px 2px;
 }
-
+.taskcard li.incomplete:hover {
+  box-shadow: rgba(135, 20, 0, 0.5) 0px 3px 8px 2px;
+}
 .taskcard button.delete {
   background-color: #be3434;
 }
+
 .buttons-wrap {
   display: flex;
   justify-content: space-between;
   gap: 20px;
 }
-.taskcard .goal {
-  font-size: 14px;
+
+.goal {
+  padding: 5px 15px 5px 15px;
+}
+button.status {
+  background-color: #129762;
+}
+button.status.done {
+  background-color: darkslateblue;
 }

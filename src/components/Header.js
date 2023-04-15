@@ -1,9 +1,11 @@
-import "./Header.css";
+import { Link } from "react-router-dom";
+import { StyledHeader } from "../shared/styles";
 
+// Header in layout
 export const Header = () => {
   return (
-    <header>
-      <a href="/">My Todo List</a>
-    </header>
+    <StyledHeader>
+      <Link to="/">My Todo List</Link>
+    </StyledHeader>
   );
 };

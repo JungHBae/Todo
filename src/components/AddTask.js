@@ -1,43 +1,60 @@
+import { useRef, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addTask } from "../redux/modules/tasks";
+
+import React from "react";
 import "./AddTask.css";
-import { useState } from "react";
 
 //AddTask
-export const AddTask = ({ tasks, setTasks }) => {
-  const [taskValue, setTaskValue] = useState(""); //set task
-  const [goal, setGoal] = useState(""); //set task
-  // handle change
-  const handleTaskChange = (event) => {
-    setTaskValue(event.target.value);
+const AddTask = () => {
+  const usedIds = new Set();
+  const generateUniqueId = () => {
+    let id = Math.floor(Math.random() * 1000);
+    while (usedIds.has(id)) {
+      id = Math.floor(Math.random() * 1000);
+    }
+    usedIds.add(id);
+    return id;
   };
-  const handleGoalChange = (event) => {
-    setGoal(event.target.value);
-  };
+
+  console.log("addtask");
+  const taskName = useRef("");
+  const goal = useRef("");
+
+  //focus task name field on load
+  useEffect(() => {
+    taskName.current.focus();
+  }, []);
+
   //form submit handler
+  const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const task = {
-      id: Math.floor(Math.random() * 10000),
-      title: taskValue,
-      goal: goal,
+      id: generateUniqueId(),
+      title: taskName.current.value,
+      goal: goal.current.value,
       completed: false,
     };
-    console.log(task);
-    setTasks([...tasks, task]);
-    setTaskValue("");
+    dispatch(addTask(task));
+
+    //reset on submit
+    taskName.current.value = "";
+    goal.current.value = "";
   };
+
   return (
     <section className="addtask">
       <form onSubmit={handleSubmit}>
         <label htmlFor="">Task:</label>
-        <input onChange={handleTaskChange} type="text" name="task" id="task" placeholder="Task Name" autoComplete="off" value={taskValue} />
+        <input type="text" name="task" id="task" placeholder="Task Name" autoComplete="off" ref={taskName} />
         <label htmlFor="">Goal:</label>
-        <input onChange={handleGoalChange} type="text" name="goal" id="goal" placeholder="Task Goal" autoComplete="off" value={goal} />
+        <input type="text" name="goal" id="goal" placeholder="Task Goal" autoComplete="off" ref={goal} />
         <button type="submit">Add Task</button>
       </form>
-      {/* <p>{taskValue}</p> */}
-      {/* <p>{goal}</p> */}
-      {/* <p>{progress}</p> */}
     </section>
   );
 };
+
+export default React.memo(AddTask);

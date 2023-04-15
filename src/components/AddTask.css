@@ -1,7 +1,7 @@
 .addtask {
   margin: 50px;
   padding: 20px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px, rgba(0, 0, 0, 0.1) 0px 6px 6px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
 
   border-radius: 5px;
   width: 100vw;

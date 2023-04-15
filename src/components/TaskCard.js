@@ -16,6 +16,9 @@ export const TaskCard = ({ task }) => {
     dispatch(toggleCompleted(id));
   }
 
+  // event.preventDefault();
+  // event.stopPropagation();
+  // to stop event bubbling, triggering Link click event when pressing Delete or Undo/Done buttons
   return (
     <Link to={`/tasks/${task.id}`}>
       <div className="taskcard">

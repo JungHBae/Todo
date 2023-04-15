@@ -17,7 +17,6 @@ const AddTask = () => {
     return id;
   };
 
-  console.log("addtask");
   const taskName = useRef("");
   const goal = useRef("");
 

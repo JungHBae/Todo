@@ -26,6 +26,7 @@ export const Details = () => {
     }
   }, [isEditing]);
 
+  // use goal state to warn empty input
   const handleGoalChange = (e) => {
     const newGoal = e.target.value;
     if (newGoal.trim() === "") {
@@ -38,6 +39,8 @@ export const Details = () => {
       setCurrentNumberOfCharacters(newGoal.length);
     }
   };
+
+  // use title state to warn empty input
   const handleTitleChange = (e) => {
     const newTitle = e.target.value;
     if (newTitle.trim() === "") {
@@ -48,25 +51,27 @@ export const Details = () => {
     setTask({ ...task, title: newTitle });
   };
 
+  //
   const handleSaveClick = () => {
     if (task.title.trim() === "") {
-      setTitleError("Title cannot be empty");
+      setTitleError("Title cannot be empty"); //prevent empty save
       return;
     } else {
-      setTitleError("");
+      setTitleError(""); //release error message on correct input
     }
 
     if (task.goal.trim() === "") {
-      setGoalError("Goal cannot be empty");
+      setGoalError("Goal cannot be empty"); //prevent empty save
       return;
     } else {
-      setGoalError("");
+      setGoalError(""); //release error message on correct input
     }
 
     dispatch(editTask(task));
     setIsEditing(false);
   };
 
+  // Edit handler to show display releveant card (edit page/info page)
   const handleEditClick = () => {
     setIsEditing(true);
   };
@@ -81,6 +86,7 @@ export const Details = () => {
         <div>
           {isEditing ? (
             <>
+              {/* displays the text editor */}
               <h5 className="title">
                 <input type="text" value={task.title} onChange={handleTitleChange} maxLength="30" ref={titleInputRef} />
               </h5>
@@ -94,6 +100,7 @@ export const Details = () => {
             </>
           ) : (
             <div>
+              {/* displays the info page */}
               <h5 className="title">{task.title}</h5>
               <div className="goal">{task.goal}</div>
             </div>

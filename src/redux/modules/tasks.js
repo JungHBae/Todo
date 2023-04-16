@@ -3,6 +3,7 @@ export const DELETE_TASK = "DELETE_TASK";
 export const TOGGLE_COMPLETED = "TOGGLE_COMPLETED";
 export const EDIT_TASK = "EDIT_TASK";
 
+//some initial values
 const initialState = {
   tasks: [
     {
@@ -26,6 +27,7 @@ const initialState = {
   ],
 };
 
+
 export const editTask = (payload) => {
   return {
     type: EDIT_TASK,
@@ -33,18 +35,23 @@ export const editTask = (payload) => {
   };
 };
 
+// receives a new task object as payload
 export const addTask = (payload) => {
   return {
     type: ADD_TASK,
     payload: payload,
   };
 };
+
+//receives id as payload
 export const deleteTask = (payload) => {
   return {
     type: DELETE_TASK,
     payload: payload,
   };
 };
+
+//receives completed boolean value as payload
 export const toggleCompleted = (payload) => {
   return {
     type: TOGGLE_COMPLETED,
@@ -52,6 +59,7 @@ export const toggleCompleted = (payload) => {
   };
 };
 
+// task reducer 
 function taskReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_TASK:
@@ -59,6 +67,7 @@ function taskReducer(state = initialState, action) {
         ...state,
         tasks: [...state.tasks, action.payload],
       };
+
     case EDIT_TASK:
       const editedTasks = state.tasks.map((task) => {
         if (task.id === action.payload.id) {

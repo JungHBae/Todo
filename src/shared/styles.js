@@ -1,4 +1,30 @@
 import styled from "styled-components";
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${({ theme }) => theme.backgroundColor};
+    color: ${({ theme }) => theme.textColor};
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  *{
+    color: ${({ theme }) => theme.textColor};
+  }
+  a{
+    color: ${({ theme }) => theme.textColor};
+  }
+  input{
+    background-color: ${({ theme }) => theme.backgroundColor};
+    color: ${({ theme }) => theme.textColor};
+  }
+  textarea {
+    background-color: ${({ theme }) => theme.backgroundColor};
+    color: ${({ theme }) => theme.textColor};
+  }
+`;
 
 // list of Styled components
 export const VerticalDivider = styled.div`
@@ -16,6 +42,10 @@ export const StyledMain = styled.div`
   margin: 0 auto;
 `;
 
+export const StyledThemeButton = styled.button`
+  background-color: transparent;
+  padding: 10px;
+`;
 export const StyledHeader = styled.header`
   display: flex;
   justify-content: center;
@@ -29,3 +59,12 @@ export const StyledHeader = styled.header`
   max-width: 1200px;
   border-radius: 0 0 5px 5px;
 `;
+export const lightTheme = {
+  backgroundColor: "#fff",
+  textColor: "#333",
+};
+
+export const darkTheme = {
+  backgroundColor: "#212121",
+  textColor: "#fff",
+};

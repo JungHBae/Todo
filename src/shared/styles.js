@@ -24,7 +24,7 @@ export const StyledHeader = styled.header`
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px, rgba(0, 0, 0, 0.1) 0px 6px 6px;
   font-size: 20px;
   padding: 0px 10px;
-  width: 100vw;
+  width: 90%;
   min-width: 800px;
   max-width: 1200px;
   border-radius: 0 0 5px 5px;

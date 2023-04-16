@@ -1,6 +1,7 @@
 export const ADD_TASK = "ADD_TASK";
 export const DELETE_TASK = "DELETE_TASK";
 export const TOGGLE_COMPLETED = "TOGGLE_COMPLETED";
+export const EDIT_TASK = "EDIT_TASK";
 
 const initialState = {
   tasks: [
@@ -13,7 +14,7 @@ const initialState = {
     {
       id: 2,
       title: "뭔가 하기 2",
-      goal: "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",
+      goal: "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure",
       completed: false,
     },
     {
@@ -23,6 +24,13 @@ const initialState = {
       completed: false,
     },
   ],
+};
+
+export const editTask = (payload) => {
+  return {
+    type: EDIT_TASK,
+    payload: payload,
+  };
 };
 
 export const addTask = (payload) => {
@@ -43,12 +51,24 @@ export const toggleCompleted = (payload) => {
     payload: payload,
   };
 };
+
 function taskReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_TASK:
       return {
         ...state,
         tasks: [...state.tasks, action.payload],
+      };
+    case EDIT_TASK:
+      const editedTasks = state.tasks.map((task) => {
+        if (task.id === action.payload.id) {
+          return { ...task, title: action.payload.title, goal: action.payload.goal };
+        }
+        return task;
+      });
+      return {
+        ...state,
+        tasks: editedTasks,
       };
 
     case TOGGLE_COMPLETED:

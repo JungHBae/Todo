@@ -8,12 +8,31 @@
   font-size: 28px;
   text-align: center;
   margin-bottom: 20px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
+
 .details span {
   font-size: 12px;
   color: rgb(99, 98, 98);
   text-align: center;
 }
+.details input {
+  font-size: inherit;
+  text-align: center;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+.details textarea {
+  font-size: inherit;
+  text-align: center;
+  border: none;
+  outline: none;
+  resize: none;
+  width: 100%;
+  height: 100%;
+}
+
 .details-taskcard {
   font-size: 20px;
   margin: 10px 5px 20px 5px;
@@ -21,9 +40,9 @@
   padding: 10px;
   gap: 8px;
   transition: 0.2s;
-  max-width: 600px;
+  width: 600px;
+  height: 250px;
   position: relative;
-  min-width: 400px;
 }
 
 .details-taskcard .title {
@@ -55,4 +74,14 @@
 }
 .details-taskcard.incomplete:hover {
   box-shadow: rgba(135, 20, 0, 0.8) 0px 5px 12px 2px;
+}
+
+button.save {
+  background-color: darkslateblue;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+span.error {
+  color: red;
 }

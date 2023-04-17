@@ -6,7 +6,8 @@ This is a simple React project to practice some React.
 ## V1 
  Simple todo list creator. 
   - Used task as state created on parent component App.js, 
-    because both the AddTask and TaskList components need to set the state of the task.
+    because both the AddTask and TaskList components need to set the state of the task.  
+    
  Problems:
   - This kind of state structure causes useless rerendering of components because they share the same state.
  Future Improvements:

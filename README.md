@@ -27,8 +27,8 @@ This is a simple React project to practice some React.
 ## v4
  Changes:
   - Major changes to the UI.
-  - Added route transition animations
-  - Added component render animations
+  - Added route transition animations using **framer-motion**
+  - Added component render animations using **framer-motion**
   - Added Editing feature to the Details page
   - Added a very primitive Light/Dark theme
   - Added real-time Details editing validation check and letter count limit.

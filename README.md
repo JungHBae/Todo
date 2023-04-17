@@ -18,6 +18,7 @@ This is a simple React project to practice some React.
 ## V2
  Changes:
   - Made some major changes using redux and router. useless rendering no longer a problem.
+  - Added a Details page of the selected task.
   
 ## v3 
  Changes:

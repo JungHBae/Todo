@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { deleteTask, toggleCompleted } from "../redux/modules/tasks";
 import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import "./TaskCard.css";
 
 export const TaskCard = ({ task }) => {
@@ -27,7 +28,7 @@ export const TaskCard = ({ task }) => {
   // to stop event bubbling, triggering Link click event when pressing Delete or Undo/Done buttons
   return (
     <Link onClick={handleLinkClick} to={`/tasks/${task.id}`}>
-      <div className="taskcard">
+      <motion.div className="taskcard" initial={{ y: -50 }} animate={{ y: 0 }} exit={{ y: 0 }}>
         <li className={task.completed ? "completed" : "incomplete"}>
           <h5 className="title">{task.title}</h5>
           <div className="goal">{task.goal}</div>
@@ -54,7 +55,7 @@ export const TaskCard = ({ task }) => {
             </button>
           </div>
         </li>
-      </div>
+      </motion.div>
     </Link>
   );
 };

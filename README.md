@@ -23,5 +23,14 @@ This is a simple React project to practice some React.
 ## v3 
  Changes:
   - Major overhaul on the appearance, css
+  
+## v4
+ Changes:
+  - Major changes to the UI.
+  - Added route transition animations
+  - Added component render animations
+  - Added Editing feature to the Details page
+  - Added a very primitive Light/Dark theme
+  - Added real-time Details editing validation check and letter count limit.
  
   

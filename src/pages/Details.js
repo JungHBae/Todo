@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { editTask } from "../redux/modules/tasks";
-
+import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import "./Details.css";
 
 export const Details = () => {
@@ -77,40 +78,43 @@ export const Details = () => {
   };
 
   return (
-    <div className="details">
-      <h1>My Task Info</h1>
-      {titleError && <span className="error">{`> ${titleError} <`}</span>}
-      {goalError && <span className="error">{`> ${goalError} <`}</span>}
-      <div onClick={isEditing ? null : handleEditClick} className={`details-taskcard ${task.completed ? "completed" : "incomplete"}`}>
-        <p className="id">ID: {task.id}</p>
-        <div>
-          {isEditing ? (
-            <>
-              {/* displays the text editor */}
-              <h5 className="title">
-                <input type="text" value={task.title} onChange={handleTitleChange} maxLength="30" ref={titleInputRef} />
-              </h5>
-              <div className="goal">
-                <textarea value={task.goal} onChange={handleGoalChange} rows="3" />
-                <span>{currentNumberOfCharacters}/100</span>
-              </div>
-              <button className="save" onClick={handleSaveClick}>
-                Save
-              </button>
-            </>
-          ) : (
-            <div>
-              {/* displays the info page */}
-              <h5 className="title">{task.title}</h5>
-              <div className="goal">{task.goal}</div>
-            </div>
-          )}
-        </div>
-      </div>
+    <AnimatePresence>
+      <motion.div className="details" initial={{ width: 0 }} animate={{ width: "100%" }} exit={{ x: "100%" }}>
+        <h1>TaskList</h1>
 
-      <span>
-        <Link to="/">{`> 돌아가기! <`}</Link>
-      </span>
-    </div>
+        {titleError && <span className="error">{`> ${titleError} <`}</span>}
+        {goalError && <span className="error">{`> ${goalError} <`}</span>}
+        <div onClick={isEditing ? null : handleEditClick} className="details-taskcard">
+          <p className="id">ID: {task.id}</p>
+          <div>
+            {isEditing ? (
+              <>
+                {/* displays the text editor */}
+                <h5 className="title">
+                  <input type="text" value={task.title} onChange={handleTitleChange} maxLength="30" ref={titleInputRef} />
+                </h5>
+                <div className="goal">
+                  <textarea value={task.goal} onChange={handleGoalChange} rows="3" />
+                  <span>{currentNumberOfCharacters}/100</span>
+                </div>
+                <button className="save" onClick={handleSaveClick}>
+                  Save
+                </button>
+              </>
+            ) : (
+              <div>
+                {/* displays the info page */}
+                <h5 className="title">{task.title}</h5>
+                <div className="goal">{task.goal}</div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <span>
+          <Link to="/">{`> 돌아가기! <`}</Link>
+        </span>
+      </motion.div>
+    </AnimatePresence>
   );
 };

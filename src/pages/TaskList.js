@@ -1,8 +1,8 @@
 import { TaskCard } from "../components/TaskCard";
 import { useSelector } from "react-redux";
 import { VerticalDivider } from "../shared/styles";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-
+import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import "./TaskList.css";
 
 export const TaskList = () => {
@@ -11,35 +11,31 @@ export const TaskList = () => {
 
   //move tasks according to done/ not done
   return (
-    <div className="tasklist">
-      <h1>TaskList</h1>
-      <ul className="lists-wrap">
-        <div className="column not-done">
-          <span className="header">Not Done</span>
-          <TransitionGroup>
+    <AnimatePresence>
+      <motion.div className="tasklist" initial={{ width: 0 }} animate={{ width: "100%" }} exit={{ x: "100%" }}>
+        <h1>TaskList</h1>
+        <ul className="lists-wrap">
+          <div className="column not-done">
+            <span className="header">Not Done</span>
+
             {tasks
               .filter((task) => task.completed === false)
               .map((task) => (
-                <CSSTransition key={task.id} timeout={300} classNames="task-card">
-                  <TaskCard task={task} />
-                </CSSTransition>
+                <TaskCard key={task.id} task={task} />
               ))}
-          </TransitionGroup>
-        </div>
-        <VerticalDivider />
-        <div className="column done">
-          <span className="header">Done</span>
-          <TransitionGroup>
+          </div>
+          <VerticalDivider />
+          <div className="column done">
+            <span className="header">Done</span>
+
             {tasks
               .filter((task) => task.completed === true)
               .map((task) => (
-                <CSSTransition key={task.id} timeout={300} classNames="task-card">
-                  <TaskCard task={task} />
-                </CSSTransition>
+                <TaskCard key={task.id} task={task} />
               ))}
-          </TransitionGroup>
-        </div>
-      </ul>
-    </div>
+          </div>
+        </ul>
+      </motion.div>
+    </AnimatePresence>
   );
 };

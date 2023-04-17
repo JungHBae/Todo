@@ -5,6 +5,13 @@
   flex-direction: column;
   width: 100%;
 }
+
+.tasklist h1 {
+  font-size: 28px;
+  text-align: center;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
 .tasklist ul {
   max-width: 1200px;
   width: 90%;
@@ -22,12 +29,6 @@
   align-items: center;
   margin: 20px 10px;
   margin-bottom: 30px;
-}
-
-.tasklist h1 {
-  font-size: 28px;
-  text-align: center;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .lists-wrap {

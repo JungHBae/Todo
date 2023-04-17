@@ -7,7 +7,7 @@
 .details h1 {
   font-size: 28px;
   text-align: center;
-  margin-bottom: 20px;
+
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -34,8 +34,9 @@
 }
 
 .details-taskcard {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px, rgba(0, 0, 0, 0.1) 0px 6px 6px;
   font-size: 20px;
-  margin: 10px 5px 20px 5px;
+  margin: 20px auto;
   border-radius: 5px;
   padding: 10px;
   gap: 8px;
@@ -84,4 +85,38 @@ button.save {
 }
 span.error {
   color: red;
+}
+
+.details ul {
+  max-width: 1200px;
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px, rgba(0, 0, 0, 0.1) 0px 6px 6px;
+
+  border-radius: 5px;
+}
+
+.details .header {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 10px;
+  margin-bottom: 30px;
+  color: rgb(51, 51, 51);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.details .lists-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 800px;
+}
+
+.column {
+  width: 50%;
 }

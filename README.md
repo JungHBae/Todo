@@ -9,7 +9,8 @@ This is a simple React project to practice some React.
     because both the AddTask and TaskList components need to set the state of the task.  
     
  Problems:
-  - This kind of state structure causes useless rerendering of components because they share the same state.
+  - This kind of state structure causes useless rerendering of components because they share the same state.  
+
  Future Improvements:
   - Need to handle text overflow
   - cards are not ux friendly, mismatch in size

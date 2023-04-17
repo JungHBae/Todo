@@ -44,3 +44,19 @@ span {
   font-size: 20px;
   font-weight: bold;
 }
+
+/* TaskList component transition animations */
+.task-card-enter {
+  opacity: 0;
+}
+.task-card-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.task-card-exit {
+  opacity: 1;
+}
+.task-card-exit-active {
+  opacity: 0;
+  transition: opacity 0ms;
+}

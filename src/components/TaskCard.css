@@ -32,15 +32,15 @@
 }
 
 .taskcard li.completed:hover {
-  box-shadow: rgba(48, 114, 0, 0.8) 0px 3px 8px 2px;
+  box-shadow: rgba(48, 114, 0, 0.8) 0px 0px 9px 2px;
 }
 
 .taskcard li.incomplete {
-  box-shadow: rgba(163, 25, 0, 0.5) 0px 4px 10px 2px;
+  box-shadow: rgba(163, 25, 0, 0.5) 0px 0px 10px 2px;
 }
 
 .taskcard li.incomplete:hover {
-  box-shadow: rgba(135, 20, 0, 0.8) 0px 5px 12px 2px;
+  box-shadow: rgba(135, 20, 0, 0.9) 0px 0px 14px 3px;
 }
 
 .taskcard button.delete {

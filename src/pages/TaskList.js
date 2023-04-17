@@ -1,6 +1,8 @@
 import { TaskCard } from "../components/TaskCard";
 import { useSelector } from "react-redux";
 import { VerticalDivider } from "../shared/styles";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
 import "./TaskList.css";
 
 export const TaskList = () => {
@@ -14,20 +16,28 @@ export const TaskList = () => {
       <ul className="lists-wrap">
         <div className="column not-done">
           <span className="header">Not Done</span>
-          {tasks
-            .filter((task) => task.completed === false)
-            .map((task) => (
-              <TaskCard key={task.id} task={task} />
-            ))}
+          <TransitionGroup>
+            {tasks
+              .filter((task) => task.completed === false)
+              .map((task) => (
+                <CSSTransition key={task.id} timeout={300} classNames="task-card">
+                  <TaskCard task={task} />
+                </CSSTransition>
+              ))}
+          </TransitionGroup>
         </div>
         <VerticalDivider />
         <div className="column done">
           <span className="header">Done</span>
-          {tasks
-            .filter((task) => task.completed === true)
-            .map((task) => (
-              <TaskCard key={task.id} task={task} />
-            ))}
+          <TransitionGroup>
+            {tasks
+              .filter((task) => task.completed === true)
+              .map((task) => (
+                <CSSTransition key={task.id} timeout={300} classNames="task-card">
+                  <TaskCard task={task} />
+                </CSSTransition>
+              ))}
+          </TransitionGroup>
         </div>
       </ul>
     </div>

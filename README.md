@@ -1,6 +1,7 @@
 # My Todo List
 
-This is a simple React project to practice some React. 
+This is a simple React project to practice some React.   
+
 Current sample deployment using Vercel: https://my-todo-list-pb8kuktvg-junghbae.vercel.app/ 
 
 ## V1 

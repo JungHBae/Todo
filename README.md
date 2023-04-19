@@ -2,7 +2,7 @@
 
 This is a simple React project to practice some React.   
 
-Current sample deployment using Vercel: https://my-todo-list-pb8kuktvg-junghbae.vercel.app/ 
+Current sample deployment using Vercel: https://my-todo-list-mvgr36knd-junghbae.vercel.app/
 
 ## V1 
  Simple todo list creator. 

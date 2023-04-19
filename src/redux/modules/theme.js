@@ -10,6 +10,10 @@ const darkTheme = {
   backgroundColor: "#2c2c2c",
   textColor: "#fff",
 };
+const notebookTheme = {
+  backgroundColor: "#F8ECC2",
+  textColor: "#fff",
+};
 
 // set Dark theme as default
 const initialTheme = {

@@ -1,7 +1,8 @@
 # My Todo List
 
-This is a simple React project to practice some React. 
+This is a simple React project to practice some React.   
 
+Current sample deployment using Vercel: https://my-todo-list-pb8kuktvg-junghbae.vercel.app/ 
 
 ## V1 
  Simple todo list creator. 
@@ -33,4 +34,10 @@ This is a simple React project to practice some React.
   - Added a very primitive Light/Dark theme
   - Added real-time Details editing validation check and letter count limit.
  
-  
+  ## V5
+  Changes:
+   - The AddTask component is no longer a part of the Layout file.
+   - AddTask now acts as a dropdown component.
+   - Added visual validation text to the AddTask component.
+   - Fixed strange scrollbar behavior, namely the 'scrollbar jump'
+   - Some minor visual adjustments using css.

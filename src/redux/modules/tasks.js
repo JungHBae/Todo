@@ -18,15 +18,8 @@ const initialState = {
       goal: "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure",
       completed: false,
     },
-    {
-      id: 3,
-      title: "뭔가 하기 3",
-      goal: "enderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat",
-      completed: false,
-    },
   ],
 };
-
 
 export const editTask = (payload) => {
   return {
@@ -59,7 +52,7 @@ export const toggleCompleted = (payload) => {
   };
 };
 
-// task reducer 
+// task reducer
 function taskReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_TASK:

@@ -28,7 +28,7 @@ export const TaskCard = ({ task }) => {
   // to stop event bubbling, triggering Link click event when pressing Delete or Undo/Done buttons
   return (
     <Link onClick={handleLinkClick} to={`/tasks/${task.id}`}>
-      <motion.div className="taskcard" initial={{ y: -50 }} animate={{ y: 0 }} exit={{ y: 0 }}>
+      <motion.div className="taskcard" initial={{ y: -20 }} animate={{ y: 0 }} exit={{ y: -10, opacity: 0 }}>
         <li className={task.completed ? "completed" : "incomplete"}>
           <h5 className="title">{task.title}</h5>
           <div className="goal">{task.goal}</div>

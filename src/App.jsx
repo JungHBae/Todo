@@ -1,23 +1,14 @@
 import Router from "./shared/Router";
-import { useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle, lightTheme, darkTheme } from "./shared/styles";
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { StyledThemeButton } from "./shared/styles";
+import { GlobalStyle } from "./shared/styles";
+import { useSelector } from "react-redux";
 
 function App() {
-  const [theme, setTheme] = useState(lightTheme);
-
-  const toggleTheme = () => {
-    setTheme(theme === lightTheme ? darkTheme : lightTheme);
-  };
+  const theme = useSelector((state) => state.themeReducer.theme);
+  const themeName = useSelector((state) => state.themeReducer.themeName);
 
   return (
-    <ThemeProvider theme={theme}>
-      <StyledThemeButton onClick={toggleTheme}>
-        <FontAwesomeIcon icon={theme === lightTheme ? faMoon : faSun} size="2x" />
-      </StyledThemeButton>
+    <ThemeProvider theme={theme} themeName={themeName}>
       <GlobalStyle />
       <Router />
     </ThemeProvider>

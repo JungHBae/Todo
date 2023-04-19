@@ -1,26 +1,23 @@
 .addtask {
-  margin: 50px;
-  padding: 20px;
+  position: relative;
+  margin: -368px 0 0 0;
+  padding: 80px 20px 20px 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
-
   border-radius: 5px;
-  width: 90%;
-  min-width: 800px;
-  max-width: 1200px;
+  width: 750px;
+  height: 430px;
+  z-index: 8;
 }
-
 .addtask form {
   display: flex;
-  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
 }
-
 .addtask label {
   font-size: 20px;
+  margin-bottom: 10px;
   margin-right: 5px;
 }
-
 .addtask input {
   font-size: 18px;
   padding: 7px;
@@ -28,11 +25,49 @@
   border-radius: 5px;
   flex-grow: 1;
   margin: 10px;
+  width: 75%;
 }
-
 .addtask button {
-  font-size: 18px;
+  font-size: 14px;
   padding: 7px 10px;
   margin: 10px;
   background-color: #129762;
+}
+.addtask .wordcount {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  font-size: 13px;
+  color: rgb(99, 98, 98);
+}
+
+.addtask .error-title {
+  position: absolute;
+  font-size: 12px;
+  text-align: center;
+  color: red;
+  top: 106px;
+}
+.addtask .error-goal {
+  position: absolute;
+  font-size: 12px;
+  text-align: center;
+  color: red;
+  top: 211px;
+}
+
+/* addtask text input and textarea */
+.addtask-form {
+  display: flex;
+  flex-direction: column;
+}
+.addtask-form textarea {
+  border-radius: 5px;
+  padding: 10px;
+  font-size: inherit;
+  outline: none;
+  resize: none;
+  width: 75%;
+  height: 120px;
+  margin: 10px;
 }

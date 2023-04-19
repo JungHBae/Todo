@@ -3,47 +3,39 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  margin-top: 0;
+  transition: margin-top 0.3s ease-out;
+  z-index: 1;
 }
-
-.tasklist h1 {
-  font-size: 28px;
+.tasklist h3 {
+  font-size: 24px;
   text-align: center;
+  margin-top: 10px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
-
 .tasklist ul {
+  min-width: 800px;
   max-width: 1200px;
-  width: 90%;
+  width: 95vw;
   margin: 20px auto;
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px, rgba(0, 0, 0, 0.1) 0px 6px 6px;
-
   border-radius: 5px;
 }
-
 .tasklist .header {
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 10px;
-  margin-bottom: 30px;
 }
 
-.lists-wrap {
+.tasklist .lists-wrap {
   display: flex;
   justify-content: space-between;
   min-width: 800px;
 }
-
-.column {
+.tasklist .lists-wrap .column {
   width: 50%;
-}
-
-span {
-  font-size: 20px;
-  font-weight: bold;
 }
 
 /* TaskList component transition animations */
@@ -60,4 +52,33 @@ span {
 .task-card-exit-active {
   opacity: 0;
   transition: opacity 0ms;
+}
+
+.task-container {
+  position: relative;
+}
+
+/* Dropdown css */
+.dropdown-wrapper.pushed-down {
+  margin-top: 370px; /* adjust to match height of dropdown-menu when open */
+}
+
+.dropdown-trigger {
+  padding-top: 15px;
+  background-color: rgb(198, 198, 198);
+  border-radius: 0 0 10px 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px, rgba(0, 0, 0, 0.1) 0px 6px 6px;
+  z-index: 6;
+}
+.dropdown-trigger:hover {
+  filter: brightness(90%);
+}
+
+.dropdown-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  transition: margin-top 0.5s ease-out;
 }

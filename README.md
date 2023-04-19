@@ -5,7 +5,8 @@ This is a simple React project to practice some React.
 Current sample deployment using Vercel: https://my-todo-list-mvgr36knd-junghbae.vercel.app/
 
 ## V1 
- Simple todo list creator. 
+ Simple todo list creator.  
+ v1: https://my-todo-list-iapp66omw-junghbae.vercel.app/  
   - Used task as state created on parent component App.js, 
     because both the AddTask and TaskList components need to set the state of the task.  
     

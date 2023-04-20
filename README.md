@@ -4,7 +4,7 @@ This is a simple React project to practice some React.
 
 Current sample deployment using Vercel: https://my-todo-list-pgx2m4ufg-junghbae.vercel.app/  
 
-## V1 
+## v1.1 
  Simple todo list creator.  
  v1: https://my-todo-list-njwhuu81e-junghbae.vercel.app
   - Used task as state created on parent component App.js, 
@@ -17,20 +17,20 @@ Current sample deployment using Vercel: https://my-todo-list-pgx2m4ufg-junghbae.
   - Need to handle text overflow
   - cards are not ux friendly, mismatch in size
   
-## V2 
+## v1.2 
  v2: https://my-todo-list-nr6nl1x10-junghbae.vercel.app/  
  
  Changes:
   - Made some major changes using redux and router. useless rendering no longer a problem.
   - Added a Details page of the selected task.
   
-## v3 
+## v1.3 
  v3: https://my-todo-list-elwqdgxvp-junghbae.vercel.app/  
  
  Changes:
   - Major overhaul on the appearance, css
   
-## v4
+## v1.4
  Changes:
  v4: https://my-todo-list-3azmxtlky-junghbae.vercel.app/  
  
@@ -41,7 +41,7 @@ Current sample deployment using Vercel: https://my-todo-list-pgx2m4ufg-junghbae.
   - Added a very primitive Light/Dark theme
   - Added real-time Details editing validation check and letter count limit.
  
-## V5
+## v1.5
  v5: https://my-todo-list-pgx2m4ufg-junghbae.vercel.app/  
  
  Changes:

@@ -39,7 +39,6 @@ const AddTask = ({ toggleDropdown }) => {
         if (changedValue.length <= 100) {
           setTask({ ...task, goal: changedValue });
         }
-
         break;
       case "Title":
         if (changedValue.trim() === "") {
@@ -50,7 +49,6 @@ const AddTask = ({ toggleDropdown }) => {
         if (changedValue.length <= 30) {
           setTask({ ...task, title: changedValue });
         }
-
         break;
       default:
         break;
@@ -58,7 +56,7 @@ const AddTask = ({ toggleDropdown }) => {
   };
 
   // generate unique id using Set()
-  const usedIds = new Set([1, 2]);
+  const usedIds = new Set([1, 2]); // since task 1 and task 2 already exists with id 1 and 2
   const generateUniqueId = () => {
     let id = Math.floor(Math.random() * 1000);
     while (usedIds.has(id)) {
@@ -94,8 +92,7 @@ const AddTask = ({ toggleDropdown }) => {
     };
     dispatch(addTask(addedTask));
     toggleDropdown();
-    task.title = "";
-    task.goal = "";
+    setTask({ title: "", goal: "", completed: false });
   };
 
   return (
@@ -119,7 +116,7 @@ const AddTask = ({ toggleDropdown }) => {
         <textarea
           type="text"
           name="Goal"
-          placeholder="Task Goal"
+          placeholder="Task Description"
           autoComplete="off"
           onChange={handleValueChange}
           onFocus={handleFocus}

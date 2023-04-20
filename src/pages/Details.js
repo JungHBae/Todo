@@ -9,7 +9,7 @@ export const Details = () => {
   // Get id from params
   const params = useParams();
   // use state of Task, which was taken from redux store using useSelector to find the task of the id given throug parameter
-  const [task, setTask] = useState(useSelector((state) => state.taskReducer.tasks.find((task) => task.id === +params.id)));
+  const [task, setTask] = useState(useSelector((state) => state.taskReducer.find((task) => task.id === +params.id)));
   const dispatch = useDispatch();
 
   // state of title and goal to validate length
@@ -27,8 +27,9 @@ export const Details = () => {
   };
 
   // complete / incomplete => undo / done
+  // very important not to dispatch, as we are still in editing mode.
+  // ONLY DISPATCH ON SAVE EVENT
   function handleStatusUpdate(id) {
-    dispatch(toggleCompleted(id));
     setTask((task) => {
       if (task.id === id) {
         return { ...task, completed: !task.completed };
@@ -91,7 +92,7 @@ export const Details = () => {
       setGoalError("Goal cannot be empty"); //prevent empty save
       return;
     }
-
+    dispatch(toggleCompleted(task.id));
     dispatch(editTask(task));
     setIsEditing(false);
   };

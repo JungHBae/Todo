@@ -46,6 +46,7 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 500;
 
   }
+
   // global button settings
   button {
     padding: 5px 10px;
@@ -78,6 +79,8 @@ export const GlobalStyle = createGlobalStyle`
   font-size: 20px;
   font-weight: bold;
 }
+
+// basic color shadow settings based on completion
 .completed {
   box-shadow: rgba(48, 114, 0, 0.5) 0px 2px 6px 2px;
   &:hover {
@@ -91,6 +94,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 }
 
+// scrollbar style edit
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
@@ -108,7 +112,7 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 // list of Styled components
-// columnt dividing line
+// column dividing line
 export const VerticalDivider = styled.div`
   margin: 10px;
   /* box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 1px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 0.5px; */

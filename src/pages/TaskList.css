@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 0;
+  margin-top: 23px;
   transition: margin-top 0.3s ease-out;
   z-index: 1;
 }
@@ -30,7 +30,7 @@
 .tasklist .lists-wrap {
   display: flex;
   justify-content: space-between;
-  min-width: 800px;
+  max-width: 777px;
 }
 .tasklist .lists-wrap .column {
   width: 50%;

@@ -15,7 +15,7 @@ export const TaskList = () => {
   }
 
   // retrieve current state of task, redux
-  const tasks = useSelector((state) => state.taskReducer.tasks);
+  const tasks = useSelector((state) => state.taskReducer);
 
   //move tasks according to done/ not done
   return (

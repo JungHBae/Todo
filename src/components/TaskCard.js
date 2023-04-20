@@ -18,9 +18,8 @@ export const TaskCard = ({ task }) => {
     dispatch(toggleCompleted(id));
   }
 
-  // Needed to add scroll to top to prevent unnatural movement before going to Link
+  // going to Link
   function handleLinkClick() {
-    window.scrollTo(0, 0);
     navigate(`/tasks/${task.id}`);
   }
   // event.preventDefault();

@@ -1,12 +1,9 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addTask } from "../redux/modules/tasks";
-
-import React from "react";
+import { useMutation, useQueryClient } from "react-query";
+import { addTask } from "../api/todos";
 import "./AddTask.css";
 
-//AddTask
-const AddTask = ({ toggleDropdown }) => {
+export const AddTask = ({ data, toggleDropdown }) => {
   const [task, setTask] = useState({ title: "", goal: "", completed: false });
 
   // state to display the focused input text length
@@ -56,7 +53,7 @@ const AddTask = ({ toggleDropdown }) => {
   };
 
   // generate unique id using Set()
-  const usedIds = new Set([1, 2]); // since task 1 and task 2 already exists with id 1 and 2
+  const usedIds = new Set(data.map((task) => task.id)); // since task 1 and task 2 already exists with id 1 and 2
   const generateUniqueId = () => {
     let id = Math.floor(Math.random() * 1000);
     while (usedIds.has(id)) {
@@ -66,8 +63,13 @@ const AddTask = ({ toggleDropdown }) => {
     return id;
   };
 
+  const queryClient = useQueryClient();
+  const mutation = useMutation(addTask, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("tasks");
+    },
+  });
   //form submit handler
-  const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
     if (task.title.trim() === "" && task.goal.trim() === "") {
@@ -90,7 +92,8 @@ const AddTask = ({ toggleDropdown }) => {
       goal: task.goal,
       completed: false,
     };
-    dispatch(addTask(addedTask));
+
+    mutation.mutate(addedTask);
     toggleDropdown();
     setTask({ title: "", goal: "", completed: false });
   };
@@ -138,5 +141,3 @@ const AddTask = ({ toggleDropdown }) => {
     </section>
   );
 };
-
-export default React.memo(AddTask);

@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
   html { margin-left: calc(100vw - 100%); } 
 
   // Apply global theme
+  
   body {
     background-color: ${({ theme }) => theme.backgroundColor};
     color: ${({ theme }) => theme.textColor};
@@ -16,9 +17,10 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Poppins", sans-serif;
     transition: background-color 0.3s ease, color 0.5s ease;
   }
-  *{
-    color: ${({ theme }) => theme.textColor};
-  }
+  body {
+  transition: all 0.5s ease;
+}
+
   a{
     color: ${({ theme }) => theme.textColor};
   }
@@ -33,15 +35,27 @@ export const GlobalStyle = createGlobalStyle`
     transition: background-color 0.3s ease, color 0.5s ease;
   }
   header{
-    background-color: ${({ theme }) => theme.backgroundColor};
+    background-color: ${({ theme }) => theme.headerColor};
+    
     transition: background-color 0.3s ease;
   }
+  .taskcard li {
+    background-color: ${({ theme }) => theme.cardColor};
+  }
+  .addtask{
+    background-color: ${({ theme }) => theme.dropdownField};
+  }
+  .header-style h3{
+    color: #fff;
+  }
   .dropdown-trigger{
-    background-color:  ${({ theme }) => theme.backgroundColor};
+    background-color:  ${({ theme }) => theme.dropdownButton};
     color: ${({ theme }) => theme.textColor};
   }
+  .details-taskcard{
+    background-color: ${({ theme }) => theme.cardColor};
+  }
   .details .status{
-    background-color:  ${({ theme }) => theme.backgroundColor};
     color: ${({ theme }) => theme.textColor};
     font-weight: 500;
 
@@ -80,19 +94,6 @@ export const GlobalStyle = createGlobalStyle`
   font-weight: bold;
 }
 
-// basic color shadow settings based on completion
-.completed {
-  box-shadow: rgba(48, 114, 0, 0.5) 0px 2px 6px 2px;
-  &:hover {
-    box-shadow: rgba(48, 114, 0, 0.9) 0px 0px 9px 2px;
-  }
-}
-.incomplete {
-  box-shadow: rgba(163, 25, 0, 0.7) 0px 0px 10px 2px;
-  &:hover {
-    box-shadow: rgba(190, 28, 0, 0.9) 0px 0px 14px 3px;
-  }
-}
 
 // scrollbar style edit
 ::-webkit-scrollbar {
@@ -137,7 +138,14 @@ export const StyledThemeButton = styled.button`
   top: 15px;
   z-index: 99;
 `;
-
+export const StyledReusableButton = styled.button`
+  padding: 5px 10px;
+  border: 0px;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  transition: filter 0.15s ease-in-out 0s;
+  background-color: ${({ btnColor }) => btnColor};
+`;
 // Header styled-component
 export const StyledHeader = styled.header`
   position: absolute;

@@ -1,4 +1,3 @@
-import taskReducer from "../modules/tasks";
 import themeReducer from "../modules/theme";
 import { configureStore } from "@reduxjs/toolkit";
 
@@ -6,7 +5,6 @@ import { configureStore } from "@reduxjs/toolkit";
 // const store = createStore(rootReducer);
 const store = configureStore({
   reducer: {
-    taskReducer,
     themeReducer,
   },
 });

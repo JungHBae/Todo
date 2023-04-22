@@ -26,6 +26,7 @@
   height: 180px;
   overflow: hidden;
   text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px, rgba(0, 0, 0, 0.1) 0px 6px 6px;
 }
 
 .taskcard .title {

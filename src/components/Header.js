@@ -10,7 +10,8 @@ import { StyledReusableButton } from "../shared/styles";
 export const Header = () => {
   const dispatch = useDispatch();
   const themeName = useSelector((state) => state.themeReducer.themeName);
-
+  const isAuth = useSelector((state) => state.authReducer);
+  console.log(isAuth);
   const handleToggle = () => {
     dispatch(toggleTheme());
   };
@@ -24,8 +25,12 @@ export const Header = () => {
         <h3>Todo</h3>
       </Link>
       <div style={{ position: "absolute", right: "10px", display: "flex", gap: "7px" }}>
-        <StyledReusableButton btnColor={"#03a061"}>Login</StyledReusableButton>
-        <StyledReusableButton btnColor={"#03a061"}>Signu</StyledReusableButton>
+        <Link to="login">
+          <StyledReusableButton btnColor={"#03a061"}>Login</StyledReusableButton>
+        </Link>
+        <Link to="signup">
+          <StyledReusableButton btnColor={"#03a061"}>Signup</StyledReusableButton>
+        </Link>
       </div>
     </StyledHeader>
   );

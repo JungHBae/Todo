@@ -109,7 +109,9 @@ export const Details = () => {
   return (
     <>
       {isLoading ? (
-        <Loading />
+        <div style={{ position: "absolute", top: "270px" }}>
+          <Loading />
+        </div>
       ) : isError ? (
         <div style={{ margin: "140px 0 140px 0" }}>Error loading task data</div>
       ) : (

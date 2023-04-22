@@ -48,7 +48,7 @@ export const TaskCard = ({ task }) => {
       <motion.div className="taskcard" initial={{ y: -20 }} animate={{ y: 0 }} exit={{ y: -10, opacity: 0 }}>
         <li className={task.completed ? "completed" : "incomplete"}>
           {isLoading ? (
-            <div className="taskcard" style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "1", fontSize: "14px" }}>
+            <div className="taskcard" style={{ display: "flex", justifyContent: "center", alignItems: "center", fontSize: "14px" }}>
               <Loading />
             </div>
           ) : (

@@ -51,37 +51,37 @@ export const TaskList = () => {
         exit={{ y: -50, opacity: 0 }}
         transition={{ duration: 0.2 }}
       >
+        <h3>TaskList</h3>
         {isLoading ? (
-          <Loading />
+          <div style={{ position: "absolute", top: "300px" }}>
+            <Loading />
+          </div>
         ) : isError ? (
           <div style={{ margin: "145px 0 145px 0" }}>Error loading task data</div>
         ) : (
-          <>
-            <h3>TaskList</h3>
-            <ul className="lists-wrap">
-              <div className="column not-done">
-                <span className="header">Not Done</span>
-                <AnimatePresence>
-                  {data
-                    .filter((task) => task.completed === false)
-                    .map((task) => (
-                      <TaskCard key={task.id} task={task} />
-                    ))}
-                </AnimatePresence>
-              </div>
-              <VerticalDivider />
-              <div className="column done">
-                <span className="header">Done</span>
-                <AnimatePresence>
-                  {data
-                    .filter((task) => task.completed === true)
-                    .map((task) => (
-                      <TaskCard key={task.id} task={task} />
-                    ))}
-                </AnimatePresence>
-              </div>
-            </ul>
-          </>
+          <ul className="lists-wrap">
+            <div className="column not-done">
+              <span className="header">Not Done</span>
+              <AnimatePresence>
+                {data
+                  .filter((task) => task.completed === false)
+                  .map((task) => (
+                    <TaskCard key={task.id} task={task} />
+                  ))}
+              </AnimatePresence>
+            </div>
+            <VerticalDivider />
+            <div className="column done">
+              <span className="header">Done</span>
+              <AnimatePresence>
+                {data
+                  .filter((task) => task.completed === true)
+                  .map((task) => (
+                    <TaskCard key={task.id} task={task} />
+                  ))}
+              </AnimatePresence>
+            </div>
+          </ul>
         )}
       </motion.div>
     </div>

@@ -17,7 +17,7 @@ const Loading = () => {
     return () => clearInterval(intervalId);
   }, []);
 
-  return <div style={{}}>Loading{dots}</div>;
+  return <div>Loading{dots}</div>;
 };
 
 export default Loading;

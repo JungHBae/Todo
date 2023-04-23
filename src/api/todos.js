@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = process.env.REACT_APP_SERVER_URL;
+const API_URL = "https://json-server-react.onrender.com/tasks";
 
 // 모든 todos를 가져오는 api
 const getTasks = async () => {

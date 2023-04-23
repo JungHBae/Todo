@@ -16,7 +16,7 @@ export const TaskList = () => {
   }
   // GET request for tasks
   const { isLoading, isError, data } = useQuery("tasks", getTasks);
-
+  console.log(data);
   //move tasks according to done/ not done
   return (
     <div className="task-container">

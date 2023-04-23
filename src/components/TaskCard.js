@@ -4,11 +4,19 @@ import { useMutation, useQueryClient } from "react-query";
 import { motion } from "framer-motion";
 import "./TaskCard.css";
 import { useState } from "react";
-import Loading from "./Loading";
+import LoadingMessage from "./LoadingMessage";
 
 export const TaskCard = ({ task }) => {
-  const queryClient = useQueryClient();
+  //show loading component when loading
   const [isLoading, setIsLoading] = useState(false);
+
+  const queryClient = useQueryClient();
+  //delete request
+  function handleDelete(id) {
+    setIsLoading(true);
+    delmutation.mutate(id);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
   const delmutation = useMutation(deleteTask, {
     onSuccess: () => {
       queryClient.invalidateQueries("tasks");
@@ -17,6 +25,13 @@ export const TaskCard = ({ task }) => {
       setIsLoading(false);
     },
   });
+
+  // PATCH request
+  function handleStatusUpdate() {
+    setIsLoading(true);
+    completedMutation.mutate(task);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
   const completedMutation = useMutation(updateDone, {
     onSuccess: () => {
       queryClient.invalidateQueries("tasks");
@@ -25,20 +40,6 @@ export const TaskCard = ({ task }) => {
       setIsLoading(false);
     },
   });
-
-  //delete button
-  function handleDelete(id) {
-    setIsLoading(true);
-    delmutation.mutate(id);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  // complete / incomplete => undo / done
-  function handleStatusUpdate() {
-    setIsLoading(true);
-    completedMutation.mutate(task);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
 
   // event.preventDefault();
   // event.stopPropagation();
@@ -49,7 +50,7 @@ export const TaskCard = ({ task }) => {
         <li className={task.completed ? "completed" : "incomplete"}>
           {isLoading ? (
             <div className="taskcard" style={{ display: "flex", justifyContent: "center", alignItems: "center", fontSize: "14px" }}>
-              <Loading />
+              <LoadingMessage />
             </div>
           ) : (
             <>

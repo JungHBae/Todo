@@ -3,17 +3,31 @@ import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { getTaskById, updateTask } from "../api/todos";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import Loading from "../components/Loading";
+import LoadingMessage from "../components/LoadingMessage";
 import "./Details.css";
 
 export const Details = () => {
   // Get id from params
   const params = useParams();
+
+  //-----------------requests-----------------------------------//
+  //GET request for the todo list
   const { isLoading, isError, data } = useQuery(`task${params.id}`, () => getTaskById(+params.id));
 
-  // use state of Task, which was taken from redux store using useSelector to find the task of the id given throug parameter
-  const [task, setTask] = useState("");
+  // PATCH request after editing is done and saved
+  const queryClient = useQueryClient();
+  const taskMutation = useMutation(updateTask, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("task");
+    },
+    // onError: () => {
+    //   //wip
+    // }
+  });
+  //-----------------------------------------------------------//
 
+  //data to state
+  const [task, setTask] = useState("");
   useEffect(() => {
     if (data) {
       setTask(data);
@@ -33,8 +47,17 @@ export const Details = () => {
     setShowLengthText(false);
   };
 
+  // state of title and goal to validate length
+  const [titleLength, setTitleLength] = useState("");
+  const [goalLength, setGoalLength] = useState("");
+
+  // state to show live error messages on change of input text
+  const [titleError, setTitleError] = useState("");
+  const [goalError, setGoalError] = useState("");
+
   // useState to toggle editing mode
   const [isEditing, setIsEditing] = useState(false);
+
   // Create a ref for the title input element
   // edit focus when isEditing changes to true
   const titleInputRef = useRef(null);
@@ -43,23 +66,9 @@ export const Details = () => {
       titleInputRef.current.focus();
     }
   }, [isEditing]);
+  //----------------------handlers---------------------------------//
 
-  // state of title and goal to validate length
-  const [titleLength, setTitleLength] = useState("");
-  const [goalLength, setGoalLength] = useState("");
-  // state to show live error messages on change of input text
-  const [titleError, setTitleError] = useState("");
-  const [goalError, setGoalError] = useState("");
-
-  const queryClient = useQueryClient();
-  const taskMutation = useMutation(updateTask, {
-    onSuccess: () => {
-      //invalildate query to notify change
-      queryClient.invalidateQueries("task");
-    },
-  });
-
-  // use goal state to warn empty input
+  //warn empty goal input
   const handleGoalChange = (e) => {
     const newGoal = e.target.value;
     if (newGoal.trim() === "") {
@@ -73,7 +82,7 @@ export const Details = () => {
     }
   };
 
-  // use title state to warn empty input
+  //warn empty title input
   const handleTitleChange = (e) => {
     const newTitle = e.target.value;
     if (newTitle.trim() === "") {
@@ -90,18 +99,19 @@ export const Details = () => {
   // save handler
   const handleSaveClick = () => {
     if (task.title.trim() === "") {
-      setTitleError("Title cannot be empty"); //prevent empty save
+      setTitleError("Title cannot be empty");
       return;
     }
     if (task.goal.trim() === "") {
-      setGoalError("Goal cannot be empty"); //prevent empty save
+      setGoalError("Goal cannot be empty");
       return;
     }
     taskMutation.mutate(task);
     setIsEditing(false);
   };
+  //-----------------------------------------------------------//
 
-  // Edit handler to show display releveant card (edit page/info page)
+  // toggle Edit
   const handleEditClick = () => {
     setIsEditing(true);
   };
@@ -110,7 +120,7 @@ export const Details = () => {
     <>
       {isLoading ? (
         <div style={{ position: "absolute", top: "270px" }}>
-          <Loading />
+          <LoadingMessage />
         </div>
       ) : isError ? (
         <div style={{ margin: "140px 0 140px 0" }}>Error loading task data</div>
@@ -125,8 +135,10 @@ export const Details = () => {
           <h3>Details</h3>
 
           <div>
-            {titleError && <span className="error">{`> ${titleError} <`}</span>}
-            {goalError && <span className="error">{`> ${goalError} <`}</span>}
+            <div className="error-wrap">
+              {titleError && <span className="error">{`> ${titleError} <`}</span>}
+              {goalError && <span className="error">{`> ${goalError} <`}</span>}
+            </div>
             <div className={`details-taskcard ${task.completed ? "completed" : "incomplete"}`}>
               <p className="id">ID: {task.id}</p>
               <div className="">

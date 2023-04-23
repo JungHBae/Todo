@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyle = createGlobalStyle`
-
+export const GlobalStyle = createGlobalStyle` 
   // prevent jumping scrollbar
   html { margin-left: calc(100vw - 100%); } 
 
   // Apply global theme
-  
   body {
     background-color: ${({ theme }) => theme.backgroundColor};
     color: ${({ theme }) => theme.textColor};
@@ -19,18 +17,17 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
   transition: all 0.5s ease;
-}
-
+  }
   a{
     color: ${({ theme }) => theme.textColor};
   }
   input{
-    background-color: ${({ theme }) => theme.backgroundColor};
+    background-color: ${({ theme }) => theme.cardColor};
     color: ${({ theme }) => theme.textColor};
     transition: background-color 0.3s ease, color 0.5s ease;
   }
   textarea {
-    background-color: ${({ theme }) => theme.backgroundColor};
+    background-color: ${({ theme }) => theme.cardColor};
     color: ${({ theme }) => theme.textColor};
     transition: background-color 0.3s ease, color 0.5s ease;
   }
@@ -58,9 +55,36 @@ export const GlobalStyle = createGlobalStyle`
   .details .status{
     color: ${({ theme }) => theme.textColor};
     font-weight: 500;
-
   }
-
+  .login {
+    background-color:  ${({ theme }) => theme.cardColor};
+    color: ${({ theme }) => theme.textColor};
+  }
+  .login input{
+    background-color: ${({ theme }) => theme.backgroundColor};
+    color: ${({ theme }) => theme.textColor};
+    transition: background-color 0.3s ease, color 0.5s ease;
+  }
+  .login textarea {
+    background-color: ${({ theme }) => theme.backgroundColor};
+    color: ${({ theme }) => theme.textColor};
+    transition: background-color 0.3s ease, color 0.5s ease;
+  }
+  .signup {
+    background-color:  ${({ theme }) => theme.cardColor};
+    color: ${({ theme }) => theme.textColor};
+  }
+  .signup input{
+    background-color: ${({ theme }) => theme.backgroundColor};
+    color: ${({ theme }) => theme.textColor};
+    transition: background-color 0.3s ease, color 0.5s ease;
+  }
+  .signup textarea {
+    background-color: ${({ theme }) => theme.backgroundColor};
+    color: ${({ theme }) => theme.textColor};
+    transition: background-color 0.3s ease, color 0.5s ease;
+  }
+  
   // global button settings
   button {
     padding: 5px 10px;
@@ -92,24 +116,20 @@ export const GlobalStyle = createGlobalStyle`
   span {
   font-size: 20px;
   font-weight: bold;
-}
+  }
 
-
-// scrollbar style edit
-::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 5px;
-}
-
+  // scrollbar style edit
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
+  }
 `;
 
 // list of Styled components

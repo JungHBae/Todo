@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-const Loading = () => {
+const LoadingMessage = () => {
   const [dots, setDots] = useState("");
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
+    const interval = setInterval(() => {
       setDots((dots) => {
         if (dots.length >= 3) {
           return "";
@@ -14,10 +14,10 @@ const Loading = () => {
       });
     }, 200);
 
-    return () => clearInterval(intervalId);
+    return () => clearInterval(interval);
   }, []);
 
   return <div>Loading{dots}</div>;
 };
 
-export default Loading;
+export default LoadingMessage;

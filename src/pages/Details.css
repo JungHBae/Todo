@@ -3,7 +3,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  z-index: 2;
 }
 .details h3 {
   font-size: 24px;
@@ -58,10 +57,12 @@
   align-items: center;
   min-width: 800px;
 }
-.details .column {
-  width: 50%;
+.details .error-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-
 .details-taskcard {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px, rgba(0, 0, 0, 0.1) 0px 6px 6px;
   font-size: 20px;

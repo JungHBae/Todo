@@ -1,0 +1,36 @@
+@keyframes noAuthSlideIn {
+  0% {
+    width: 0vw;
+  }
+  100% {
+    width: 140px;
+    overflow: hidden;
+  }
+}
+@keyframes authSlideIn {
+  0% {
+    width: 0px;
+    overflow: hidden;
+  }
+  100% {
+    width: 70px;
+  }
+}
+
+.transition-no-auth {
+  overflow: hidden;
+  animation: noAuthSlideIn 0.5s forwards;
+}
+.transition-auth {
+  overflow: hidden;
+  animation: authSlideIn 0.5s forwards;
+}
+.username {
+  position: absolute;
+  right: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(165, 165, 165);
+  font-size: 10px;
+}

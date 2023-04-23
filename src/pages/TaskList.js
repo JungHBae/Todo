@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { getTasks } from "../api/todos";
-import Loading from "../components/Loading";
+import LoadingMessage from "../components/LoadingMessage";
 import "./TaskList.css";
 
 export const TaskList = () => {
@@ -14,8 +14,7 @@ export const TaskList = () => {
   function toggleDropdown() {
     setIsOpen(!isOpen);
   }
-
-  // get tasks
+  // GET request for tasks
   const { isLoading, isError, data } = useQuery("tasks", getTasks);
 
   //move tasks according to done/ not done
@@ -54,7 +53,7 @@ export const TaskList = () => {
         <h3>TaskList</h3>
         {isLoading ? (
           <div style={{ position: "absolute", top: "300px" }}>
-            <Loading />
+            <LoadingMessage />
           </div>
         ) : isError ? (
           <div style={{ margin: "145px 0 145px 0" }}>Error loading task data</div>

@@ -27,8 +27,8 @@ const darkTheme = {
 
 // set Dark theme as default
 const initialState = {
-  theme: darkTheme,
-  themeName: DARK_THEME,
+  theme: lightTheme,
+  themeName: LIGHT_THEME,
 };
 
 const themeSlice = createSlice({

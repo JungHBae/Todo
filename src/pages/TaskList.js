@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { getTasks } from "../api/todos";
-import LoadingMessage from "../components/LoadingMessage";
+import LoadingMessage from "../utility/LoadingMessage";
 import "./TaskList.css";
 
 export const TaskList = () => {

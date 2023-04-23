@@ -61,7 +61,7 @@ export const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.textColor};
   }
   .login input{
-    background-color: ${({ theme }) => theme.backgroundColor};
+    background-color: ${({ theme }) => theme.dropdownField};
     color: ${({ theme }) => theme.textColor};
     transition: background-color 0.3s ease, color 0.5s ease;
   }
@@ -75,7 +75,7 @@ export const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.textColor};
   }
   .signup input{
-    background-color: ${({ theme }) => theme.backgroundColor};
+    background-color: ${({ theme }) => theme.dropdownField};
     color: ${({ theme }) => theme.textColor};
     transition: background-color 0.3s ease, color 0.5s ease;
   }

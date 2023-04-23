@@ -99,7 +99,7 @@ export const Login = () => {
               maxLength="30"
             />
 
-            <StyledReusableButton style={{ width: "75%", marginTop: "10px" }} btnColor={"#03a061"}>
+            <StyledReusableButton style={{ width: "75%", marginTop: "12px" }} btnColor={"#03a061"}>
               Login
             </StyledReusableButton>
           </form>

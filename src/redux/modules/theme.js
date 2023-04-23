@@ -16,6 +16,7 @@ const lightTheme = {
 const darkTheme = {
   backgroundColor: "#343434",
   dropdownButton: "#343434",
+  dropdownField: "#343434",
   headerColor: "#2c2c2c",
   cardColor: "#3e3e3e",
   textColor: "#fff",

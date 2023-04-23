@@ -4,12 +4,13 @@ import { useMutation, useQueryClient } from "react-query";
 import { motion } from "framer-motion";
 import "./TaskCard.css";
 import { useState } from "react";
-import LoadingMessage from "./LoadingMessage";
+import LoadingMessage from "../utility/LoadingMessage";
+import { useSelector } from "react-redux";
 
 export const TaskCard = ({ task }) => {
   //show loading component when loading
   const [isLoading, setIsLoading] = useState(false);
-
+  const isAuth = useSelector((state) => state.authReducer.authorizedUser);
   const queryClient = useQueryClient();
   //delete request
   function handleDelete(id) {
@@ -56,30 +57,38 @@ export const TaskCard = ({ task }) => {
             <>
               <h5 className="title">{task.title}</h5>
               <div className="goal">{task.goal}</div>
-              <div className="buttons-wrap">
-                <button
-                  onClick={(event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    handleStatusUpdate(task.id);
-                  }}
-                  className={`status${!task.completed ? "" : " done"}`}
-                  disabled={isLoading}
-                >
-                  {task.completed ? "Undone" : "Done"}
-                </button>
-                <button
-                  onClick={(event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    handleDelete(task.id);
-                  }}
-                  className="delete"
-                  disabled={isLoading}
-                >
-                  Delete
-                </button>
-              </div>
+              {isAuth ? (
+                <>
+                  <div className="checkbox-button">
+                    <span
+                      onClick={(event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        handleStatusUpdate(task.id);
+                      }}
+                      className="material-icons round"
+                      style={{ cursor: "default", fontSize: "18px" }}
+                    >
+                      {task.completed ? "check_box" : "check_box_outline_blank"}
+                    </span>
+                  </div>
+                  <div className="delete-button">
+                    <span
+                      onClick={(event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        handleDelete(task.id);
+                      }}
+                      className="material-icons round"
+                      style={{ cursor: "default" }}
+                    >
+                      delete_outline
+                    </span>
+                  </div>
+                </>
+              ) : (
+                <div></div>
+              )}
             </>
           )}
         </li>

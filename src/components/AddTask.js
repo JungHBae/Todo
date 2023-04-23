@@ -14,6 +14,7 @@ export const AddTask = ({ data, toggleDropdown }) => {
   const [titleError, setTitleError] = useState("");
   const [goalError, setGoalError] = useState("");
 
+  // show length of focused input
   const handleFocus = (e) => {
     setFocusedInput(e.target.name);
     setShowLengthText(true);

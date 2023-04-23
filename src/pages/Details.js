@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { getTaskById, updateTask } from "../api/todos";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import LoadingMessage from "../components/LoadingMessage";
+import LoadingMessage from "../utility/LoadingMessage";
 import "./Details.css";
 
 export const Details = () => {

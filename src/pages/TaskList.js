@@ -63,7 +63,7 @@ export const TaskList = () => {
               <span className="header">Not Done</span>
               <AnimatePresence>
                 {data
-                  .filter((task) => task.completed === false)
+                  ?.filter((task) => task.completed === false)
                   .map((task) => (
                     <TaskCard key={task.id} task={task} />
                   ))}
@@ -74,7 +74,7 @@ export const TaskList = () => {
               <span className="header">Done</span>
               <AnimatePresence>
                 {data
-                  .filter((task) => task.completed === true)
+                  ?.filter((task) => task.completed === true)
                   .map((task) => (
                     <TaskCard key={task.id} task={task} />
                   ))}

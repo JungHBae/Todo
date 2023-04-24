@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../redux/modules/theme";
@@ -21,6 +21,7 @@ export const Header = () => {
   const themeName = useSelector((state) => state.themeReducer.themeName);
   const isAuth = useSelector((state) => state.authReducer.authorizedUser);
   const userName = useSelector((state) => state.authReducer.userName);
+  const navigate = useNavigate();
   // username is updated if logged in
 
   // look at cookie to see if it exists every time user refreshes page
@@ -36,6 +37,7 @@ export const Header = () => {
   const handleLogout = () => {
     Cookies.remove("token");
     dispatch(authUser(["false", ""]));
+    navigate("/");
   };
   // theme toggle handler
   const handleToggle = () => {
@@ -49,7 +51,7 @@ export const Header = () => {
       </StyledThemeButton>
       <Link to="/" style={{ display: "flex", alignItems: "center", gap: "5px" }}>
         <img src={logoImage} alt="logoImage" style={{ maxHeight: "30px", maxWidth: "30px" }} />
-        <h3>Todo</h3>
+        <h3>Do</h3>
       </Link>
       {isAuth ? (
         <>

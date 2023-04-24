@@ -39,6 +39,11 @@ export const GlobalStyle = createGlobalStyle`
   .taskcard li {
     background-color: ${({ theme }) => theme.cardColor};
   }
+  .taskcard .username{
+    background-color: ${({ theme }) => theme.userNameField};
+    color: ${({ theme }) => theme.textColor};
+  }
+  
   .addtask{
     background-color: ${({ theme }) => theme.dropdownField};
   }
@@ -52,10 +57,15 @@ export const GlobalStyle = createGlobalStyle`
   .details-taskcard{
     background-color: ${({ theme }) => theme.cardColor};
   }
+  .details-taskcard .user {
+    background-color: ${({ theme }) => theme.userNameField};
+    color: ${({ theme }) => theme.nameTagColor};
+  }
   .details .status{
     color: ${({ theme }) => theme.textColor};
     font-weight: 500;
   }
+  
   .login {
     background-color:  ${({ theme }) => theme.cardColor};
     color: ${({ theme }) => theme.textColor};

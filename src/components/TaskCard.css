@@ -68,7 +68,10 @@
   transform: translate(0px, -1px);
 }
 .taskcard .username {
+  line-height: 1.5;
   position: absolute;
+  border-radius: 5px;
+  padding: 3px 5px;
   bottom: 15px;
-  right: 30px;
+  right: 26px;
 }

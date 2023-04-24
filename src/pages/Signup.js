@@ -21,10 +21,12 @@ export const Signup = () => {
   //POST request to signup user
   const signupUser = async (user) => {
     try {
-      await axios.post("http://3.38.191.164/register", user);
+      await axios.post(`${process.env.REACT_APP_LOGIN_SERVER_URL}/register`, user);
+      alert("가입 성공!");
+      navigate("/login");
       // console.log(response)
     } catch (error) {
-      alert(error);
+      alert(`401: ${error.response.data.message}`);
     }
   };
 
@@ -55,7 +57,6 @@ export const Signup = () => {
       return;
     }
     signupUser(user);
-    navigate("/login");
   };
 
   return (

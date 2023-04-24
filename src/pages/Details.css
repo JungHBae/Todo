@@ -98,10 +98,11 @@
 }
 .details-taskcard .user {
   position: absolute;
-  right: 16px;
-  top: 7px;
-  margin: 11px 0 0 15px;
-  font-size: 16px;
+  right: 19px;
+  top: 17px;
+  padding: 3px 7px;
+  font-size: 14px;
+  border-radius: 8px;
 }
 
 .details button.btn-save,

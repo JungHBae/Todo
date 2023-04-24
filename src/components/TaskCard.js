@@ -2,17 +2,18 @@ import { Link } from "react-router-dom";
 import { deleteTask, updateDone } from "../api/todos";
 import { useMutation, useQueryClient } from "react-query";
 import { motion } from "framer-motion";
-import "./TaskCard.css";
 import { useState } from "react";
 import LoadingMessage from "../utility/LoadingMessage";
 import { useSelector } from "react-redux";
+import "./TaskCard.css";
 
 export const TaskCard = ({ task }) => {
   //show loading component when loading
   const [isLoading, setIsLoading] = useState(false);
   const userName = useSelector((state) => state.authReducer.userName);
   const queryClient = useQueryClient();
-  //delete request
+
+  //DELETE request
   function handleDelete(id) {
     setIsLoading(true);
     delmutation.mutate(id);
@@ -55,7 +56,7 @@ export const TaskCard = ({ task }) => {
             </div>
           ) : (
             <>
-              {task.userId && <div className="username">By: {task.userId}</div>}
+              {task.userId && <span className="username">{task.userId}</span>}
               <h5 className="title">{task.title}</h5>
               <div className="goal">{task.goal}</div>
               {task.userId && userName === task.userId ? (

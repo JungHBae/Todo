@@ -22,9 +22,6 @@ export const Details = () => {
     onSuccess: () => {
       queryClient.invalidateQueries("task");
     },
-    // onError: () => {
-    //   //wip
-    // }
   });
   //-----------------------------------------------------------//
 
@@ -142,8 +139,7 @@ export const Details = () => {
               {goalError && <span className="error">{`> ${goalError} <`}</span>}
             </div>
             <div className={`details-taskcard ${task.completed ? "completed" : "incomplete"}`}>
-              <p className="id">ID: {task.id}</p>
-              {task.userId && <p className="user">By: {task.userId}</p>}
+              {task.userId && <span className="user">{task.userId}</span>}
               <div className="">
                 {isEditing ? (
                   <>

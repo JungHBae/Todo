@@ -10,7 +10,9 @@ const lightTheme = {
   headerColor: "#292611",
   headerTextColor: "#fff",
   textColor: "#333",
+  nameTagColor: "#333",
   cardColor: "#fffbda",
+  userNameField: "#f9eeaa",
 };
 
 const darkTheme = {
@@ -20,6 +22,8 @@ const darkTheme = {
   headerColor: "#2c2c2c",
   cardColor: "#3e3e3e",
   textColor: "#fff",
+  nameTagColor: "#b0b0b0",
+  userNameField: "#2c2c2c",
 };
 // const notebookTheme = {
 //   backgroundColor: "#2c2c2c",

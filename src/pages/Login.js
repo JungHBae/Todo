@@ -26,23 +26,19 @@ export const Login = () => {
   // Login POST request to the server
   const loginUser = async (user) => {
     try {
-      const response = await axios.post("http://3.38.191.164/login", user);
+      const response = await axios.post(`${process.env.REACT_APP_LOGIN_SERVER_URL}/login`, user);
       const { token } = response.data;
 
-      setAuthToken(token); // store the token in a cookie
       const userToken = jwtDecode(token);
-      console.log(userToken);
+      const expirationTime = new Date(userToken.exp * 1000);
+      // expirationTime.setTime(expirationTime.getTime() + 3 * 1000); // 10 minutes
+      Cookies.set("token", token, { expires: expirationTime });
+      // console.log(userToken);
       dispatch(authUser(["true", userToken.id]));
-      navigate("/");
+      navigate(-1);
     } catch (error) {
-      alert(error);
+      alert(`401: ${error.response.data.message}`);
     }
-  };
-  // use received token to store in cookie
-  const setAuthToken = (token) => {
-    const expirationTime = new Date();
-    expirationTime.setTime(expirationTime.getTime() + 10 * 60 * 1000); // 10 minutes
-    Cookies.set("token", token, { expires: expirationTime });
   };
 
   //----------------handlers------------------------//

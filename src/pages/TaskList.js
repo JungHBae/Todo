@@ -7,6 +7,7 @@ import { useQuery } from "react-query";
 import { getTasks } from "../api/todos";
 import LoadingMessage from "../utility/LoadingMessage";
 import "./TaskList.css";
+import { useSelector } from "react-redux";
 
 export const TaskList = () => {
   // toggle for the AddTask dropdown component
@@ -14,6 +15,8 @@ export const TaskList = () => {
   function toggleDropdown() {
     setIsOpen(!isOpen);
   }
+  const isAuth = useSelector((state) => state.authReducer.authorizedUser); // addtask if logged in
+
   // GET request for tasks
   const { isLoading, isError, data } = useQuery("tasks", getTasks);
   // console.log(data);
@@ -28,7 +31,7 @@ export const TaskList = () => {
           exit={{ y: -50, opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
-          <AddTask data={data} toggleDropdown={toggleDropdown} />
+          {isAuth ? <AddTask data={data} toggleDropdown={toggleDropdown} /> : <div style={{ height: "18px", width: "20px" }}></div>}
 
           <div className="button-wrapper">
             <button className="dropdown-trigger" onClick={toggleDropdown} style={{ display: "flex", alignItems: "center" }}>
@@ -56,7 +59,7 @@ export const TaskList = () => {
             <LoadingMessage />
           </div>
         ) : isError ? (
-          <div style={{ margin: "145px 0 145px 0" }}>Error loading task data</div>
+          <div style={{ position: "absolute", top: "300px" }}>Error loading task data</div>
         ) : (
           <ul className="lists-wrap">
             <div className="column not-done">
@@ -69,7 +72,9 @@ export const TaskList = () => {
                   ))}
               </AnimatePresence>
             </div>
+
             <VerticalDivider />
+
             <div className="column done">
               <span className="header">Done</span>
               <AnimatePresence>

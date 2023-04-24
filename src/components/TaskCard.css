@@ -67,3 +67,8 @@
 .taskcard .checkbox-button:hover {
   transform: translate(0px, -1px);
 }
+.taskcard .username {
+  position: absolute;
+  bottom: 15px;
+  right: 30px;
+}

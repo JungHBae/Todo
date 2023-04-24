@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { addTask } from "../api/todos";
 import "./AddTask.css";
+import { useSelector } from "react-redux";
 
 export const AddTask = ({ data, toggleDropdown }) => {
   const [task, setTask] = useState({ title: "", goal: "", completed: false });
-
+  const userName = useSelector((state) => state.authReducer.userName);
   // state to display the focused input text length
   const [focusedInput, setFocusedInput] = useState("");
   const [showLengthText, setShowLengthText] = useState(false);
@@ -54,7 +55,7 @@ export const AddTask = ({ data, toggleDropdown }) => {
   };
 
   // generate unique id using Set()
-  const usedIds = new Set(data.map((task) => task.id)); // since task 1 and task 2 already exists with id 1 and 2
+  const usedIds = new Set(data.map((task) => task.id)); //get existing task ids
   const generateUniqueId = () => {
     let id = Math.floor(Math.random() * 1000);
     while (usedIds.has(id)) {
@@ -90,6 +91,7 @@ export const AddTask = ({ data, toggleDropdown }) => {
     const addedTask = {
       id: generateUniqueId(),
       title: task.title,
+      userId: userName,
       goal: task.goal,
       completed: false,
     };

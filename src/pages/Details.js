@@ -5,11 +5,13 @@ import { getTaskById, updateTask } from "../api/todos";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import LoadingMessage from "../utility/LoadingMessage";
 import "./Details.css";
+import { useSelector } from "react-redux";
 
 export const Details = () => {
   // Get id from params
   const params = useParams();
-
+  //check if logged in
+  const userName = useSelector((state) => state.authReducer.userName);
   //-----------------requests-----------------------------------//
   //GET request for the todo list
   const { isLoading, isError, data } = useQuery(`task${params.id}`, () => getTaskById(+params.id));
@@ -141,6 +143,7 @@ export const Details = () => {
             </div>
             <div className={`details-taskcard ${task.completed ? "completed" : "incomplete"}`}>
               <p className="id">ID: {task.id}</p>
+              {task.userId && <p className="user">By: {task.userId}</p>}
               <div className="">
                 {isEditing ? (
                   <>
@@ -185,9 +188,13 @@ export const Details = () => {
                       <h5 className="title">{task.title}</h5>
                       <div className="goal">{task.goal}</div>
                     </div>
-                    <button className="btn-edit" onClick={handleEditClick}>
-                      edit
-                    </button>
+                    {userName === task.userId ? (
+                      <button className="btn-edit" onClick={handleEditClick}>
+                        edit
+                      </button>
+                    ) : (
+                      ""
+                    )}
                   </>
                 )}
               </div>

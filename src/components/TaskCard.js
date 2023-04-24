@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 export const TaskCard = ({ task }) => {
   //show loading component when loading
   const [isLoading, setIsLoading] = useState(false);
-  const isAuth = useSelector((state) => state.authReducer.authorizedUser);
+  const userName = useSelector((state) => state.authReducer.userName);
   const queryClient = useQueryClient();
   //delete request
   function handleDelete(id) {
@@ -55,9 +55,10 @@ export const TaskCard = ({ task }) => {
             </div>
           ) : (
             <>
+              {task.userId && <div className="username">By: {task.userId}</div>}
               <h5 className="title">{task.title}</h5>
               <div className="goal">{task.goal}</div>
-              {isAuth ? (
+              {task.userId && userName === task.userId ? (
                 <>
                   <div className="checkbox-button">
                     <span

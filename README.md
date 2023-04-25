@@ -2,7 +2,7 @@
 
 This is a simple React project to practice some React.   
 
-Current sample deployment using Vercel: http://todoawsbucket.s3-website.ap-northeast-2.amazonaws.com/  
+Current sample deployment: http://todoawsbucket.s3-website.ap-northeast-2.amazonaws.com/  
 
 ## v1.1 
  Simple todo list creator.  

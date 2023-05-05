@@ -18,6 +18,7 @@ const authSlice = createSlice({
       } else if (action.payload[0] === "false") {
         return {
           authorizedUser: false,
+          userName: action.payload[1]
         };
       }
     },
